@@ -1,6 +1,5 @@
 package FieschKebabBuyer;
 
-
 import FieschKebabBuyer.Util.Util;
 import FieschKebabBuyer.tasks.BankTask;
 import FieschKebabBuyer.tasks.BuyTask;

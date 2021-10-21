@@ -9,4 +9,6 @@ public class Util {
     public static Area vendorArea = new Area(3275, 3182, 3271, 3179);
     public static String vendorName = "Karim";
     public static Timer timer;
+
+    public static Boolean antibanActive = false;
 }

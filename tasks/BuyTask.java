@@ -30,19 +30,33 @@ public class BuyTask extends TaskNode {
         if(Dialogues.inDialogue()){
             if(Dialogues.canContinue()){
                 String d = Dialogues.getNPCDialogue();
-                if(Dialogues.continueDialogue()){
-                    sleepUntil(() -> d != Dialogues.getNPCDialogue(), Calculations.random(500, 1500));
+                //Do something else sometimes
+                if(1 == Calculations.random(1, 10)){
+                    if(Dialogues.clickContinue()){
+                        sleepUntil(() -> d != Dialogues.getNPCDialogue(), Calculations.random(500, 1500));
+                    }
+                }else{
+                    if(Dialogues.continueDialogue()){
+                        sleepUntil(() -> d != Dialogues.getNPCDialogue(), Calculations.random(500, 1500));
+                    }
                 }
-
-                sleep(500);
             }
+
             if(Dialogues.areOptionsAvailable()){
                 String d = Dialogues.getNPCDialogue();
-                if(Dialogues.chooseFirstOptionContaining("Yes")){
-                    Util.kebabCount++;
-                    sleepUntil(() -> d != Dialogues.getNPCDialogue(), Calculations.random(500, 1500));
+                //Misclick like a idiot
+                if(1 == Calculations.random(1, 30)){
+                    if(Dialogues.chooseFirstOption()){
+                        sleepUntil(() -> d != Dialogues.getNPCDialogue(), Calculations.random(500, 1500));
+                    }
+                }else{
+                    if(Dialogues.chooseFirstOptionContaining("Yes")){
+                        Util.kebabCount++;
+                        sleepUntil(() -> d != Dialogues.getNPCDialogue(), Calculations.random(500, 1500));
+                    }
                 }
             }
+
         }else{
             if(vendor.interact("Talk-to")){
                 sleepUntil(() -> Dialogues.inDialogue(), 2000);
